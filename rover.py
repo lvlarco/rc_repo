@@ -48,6 +48,10 @@ sleep(2)
 print "Right CC"
 right_motor.counter_clockwise()
 sleep(2)
+right_motor.stop()
+left_motor.stop()
+
+
     
 # except StandardError:
 #     print'Error running rover.py'
