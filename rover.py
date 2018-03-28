@@ -1,8 +1,12 @@
 import RPi.GPIO as GPIO
+from time import sleep
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 left_in1_pin = 4
 left_in2_pin = 17
+right_in1_pin = 23
+right_in2_pin = 24
+Motor1E = 18
 
 class Motor(object):
         def __init__(self, in1_pin, in2_pin):
@@ -22,14 +26,32 @@ class Motor(object):
         def stop(self):
                 GPIO.output(self.in1_pin, False)    
                 GPIO.output(self.in2_pin, False)
-               
-'''def set(property, value):
+                
+
+right_motor = Motor(right_in1_pin, right_in2_pin)
+left_motor = Motor(left_in1_pin, left_in2_pin)
+
+print "Left Clockwise"
+left_motor.clockwise()
+sleep(2)
+print "Left CC"
+left_motor.counter_clockwise()
+sleep(2)
+print "Right Clockwise"
+right_motor.clockwise()
+sleep(2)
+print "Right CC"
+right_motor.counter_clockwise()
+sleep(2)
+"""
+def set(property, value):
     try:
         f = open("/sys/class/rpi-pwm/pwm0/" + property, 'w')
         f.write(value)
         f.close()      
     except:
-        print("Error writing to: " + property + " value: " + value)'''
+        print("Error writing to: " + property + " value: " + value)
+
        
 try:
         set("delayed", "0")
@@ -64,3 +86,4 @@ try:
 except KeyboardInterrupt:
         left_motor.stop()
         print "\nstopped"
+"""
