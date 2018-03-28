@@ -8,7 +8,7 @@ right_in1_pin = 23
 right_in2_pin = 24
 Motor1E = 18
 
-class Motor(object):
+class Motor(pin1,pin2):
         def __init__(self, in1_pin, in2_pin):
                 self.in1_pin = in1_pin
                 self.in2_pin = in2_pin
@@ -29,8 +29,8 @@ class Motor(object):
                 
 try:
     
-    right_motor = Motor(right_in1_pin, right_in2_pin)
     left_motor = Motor(left_in1_pin, left_in2_pin)
+    right_motor = Motor(right_in1_pin, right_in2_pin)
 
     print "Left Clockwise"
     left_motor.clockwise()
