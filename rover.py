@@ -27,22 +27,27 @@ class Motor(object):
                 GPIO.output(self.in1_pin, False)    
                 GPIO.output(self.in2_pin, False)
                 
+try:
+    
+    right_motor = Motor(right_in1_pin, right_in2_pin)
+    left_motor = Motor(left_in1_pin, left_in2_pin)
 
-right_motor = Motor(right_in1_pin, right_in2_pin)
-left_motor = Motor(left_in1_pin, left_in2_pin)
-
-print "Left Clockwise"
-left_motor.clockwise()
-sleep(2)
-print "Left CC"
-left_motor.counter_clockwise()
-sleep(2)
-print "Right Clockwise"
-right_motor.clockwise()
-sleep(2)
-print "Right CC"
-right_motor.counter_clockwise()
-sleep(2)
+    print "Left Clockwise"
+    left_motor.clockwise()
+    sleep(2)
+    print "Left CC"
+    left_motor.counter_clockwise()
+    sleep(2)
+    print "Right Clockwise"
+    right_motor.clockwise()
+    sleep(2)
+    print "Right CC"
+    right_motor.counter_clockwise()
+    sleep(2)
+    
+except StandardError:
+    print'Error running rover.py'
+    
 """
 def set(property, value):
     try:
