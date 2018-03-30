@@ -10,6 +10,6 @@ GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
     input_state = GPIO.input(button_pin)
-    if input state == False:
+    if input_state == False:
         print'Button Pressed'
         sleep(0.2)

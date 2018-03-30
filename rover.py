@@ -42,6 +42,7 @@ sleep(2)
 print "Left CC"
 left_motor.counter_clockwise()
 sleep(2)
+left_motor.stop()
 print "Right Clockwise"
 right_motor.clockwise()
 sleep(2)
@@ -49,7 +50,7 @@ print "Right CC"
 right_motor.counter_clockwise()
 sleep(2)
 right_motor.stop()
-left_motor.stop()
+
 
 GPIO.cleanup()
 
