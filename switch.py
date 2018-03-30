@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import rover as rover
+#import rover as rover
 from time import sleep
 
 GPIO.setwarnings(False)
