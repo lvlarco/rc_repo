@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 left_in1_pin = 4
@@ -11,52 +12,49 @@ Motor1E = 18
 
 class Motor(object):
 
-        def __init__(self, in1_pin, in2_pin):
+    def __init__(self, in1_pin, in2_pin):
                 self.in1_pin = in1_pin
                 self.in2_pin = in2_pin
                
                 GPIO.setup(self.in1_pin, GPIO.OUT)
                 GPIO.setup(self.in2_pin, GPIO.OUT)
        
-        def clockwise(self):
+    def clockwise(self):
                 GPIO.output(self.in1_pin, True)    
                 GPIO.output(self.in2_pin, False)
 
-        def counter_clockwise(self):
+    def counter_clockwise(self):
                 GPIO.output(self.in1_pin, False)
                 GPIO.output(self.in2_pin, True)
                
-        def stop(self):
+    def stop(self):
                 GPIO.output(self.in1_pin, False)    
                 GPIO.output(self.in2_pin, False)                
 
-
-# try:
+try:
     
-left_motor = Motor(left_in1_pin, left_in2_pin)
-right_motor = Motor(right_in1_pin, right_in2_pin)
+    left_motor = Motor(left_in1_pin, left_in2_pin)
+    right_motor = Motor(right_in1_pin, right_in2_pin)
 
-print "Left Clockwise"
-left_motor.clockwise()
-sleep(2)
-print "Left CC"
-left_motor.counter_clockwise()
-sleep(2)
-left_motor.stop()
-print "Right Clockwise"
-right_motor.clockwise()
-sleep(2)
-print "Right CC"
-right_motor.counter_clockwise()
-sleep(2)
-right_motor.stop()
-
-
+    print "Left Clockwise"
+    left_motor.clockwise()
+    sleep(2)
+    print "Left CC"
+    left_motor.counter_clockwise()
+    sleep(2)
+    left_motor.stop()
+    print "Right Clockwise"
+    right_motor.clockwise()
+    sleep(2)
+    print "Right CC"
+    right_motor.counter_clockwise()
+    sleep(2)
+    right_motor.stop()
+    
+except StandardError:
+    print'Error running rover.py'
+     
 GPIO.cleanup()
-
-    
-# except StandardError:
-#     print'Error running rover.py'
     
 """
 def set(property, value):
