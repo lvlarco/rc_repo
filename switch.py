@@ -18,8 +18,8 @@ GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
     input_state = GPIO.input(button_pin)
-    left_motor = __motor_(left_in1_pin, left_in2_pin)
-    right_motor = __motor_(right_in1_pin, right_in2_pin)
+    left_motor = self.__motor_(left_in1_pin, left_in2_pin)
+    right_motor = self.__motor_(right_in1_pin, right_in2_pin)
     
     if input_state == False:
         left_motor.clockwise()
