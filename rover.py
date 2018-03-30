@@ -36,7 +36,6 @@ class Motor(object):
         right_motor = Motor(right_in1_pin, right_in2_pin)
         
         left_motor.clockwise()
-
         right_motor.counter_clockwise()
 
 
