@@ -12,7 +12,7 @@ GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 while True:
     input_state = GPIO.input(button_pin)
     if input_state == False:
-        Motor.forward()
+        Motor.forward(self)
         print'Going Forward'
         
         sleep(0.2)
