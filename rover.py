@@ -31,10 +31,22 @@ class Motor(object):
                 GPIO.output(self.in1_pin, False)    
                 GPIO.output(self.in2_pin, False)                
 
+    def forward(self):
+        left_motor = Motor(left_in1_pin, left_in2_pin)
+        right_motor = Motor(right_in1_pin, right_in2_pin)
+        
+        left_motor.clockwise()
+
+        right_motor.counter_clockwise()
+
+
+"""
 try:
     
     left_motor = Motor(left_in1_pin, left_in2_pin)
     right_motor = Motor(right_in1_pin, right_in2_pin)
+    
+
 
     print "Left Clockwise"
     left_motor.clockwise()
@@ -56,7 +68,7 @@ except StandardError:
      
 GPIO.cleanup()
     
-"""
+
 def set(property, value):
     try:
         f = open("/sys/class/rpi-pwm/pwm0/" + property, 'w')
