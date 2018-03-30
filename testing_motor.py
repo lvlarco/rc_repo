@@ -20,14 +20,16 @@ GPIO.setup(right_in2_pin,GPIO.OUT)
 GPIO.setup(Motor1E,GPIO.OUT)
  
 #print "Turning left motor on"
-#GPIO.output(left_in1_pin,GPIO.HIGH)
-#GPIO.output(left_in2_pin,GPIO.LOW)
-GPIO.output(Motor1E,GPIO.HIGH)
+GPIO.output(left_in1_pin,GPIO.HIGH)
+GPIO.output(left_in2_pin,GPIO.LOW)
+#GPIO.output(Motor1E,GPIO.HIGH)
  
 sleep(2)
 
 print "Stopping motor"
-GPIO.output(Motor1E,GPIO.LOW)
+GPIO.output(left_in1_pin,GPIO.LOW)
+GPIO.output(left_in2_pin,GPIO.LOW)
+#GPIO.output(Motor1E,GPIO.LOW)
 """
 print "Turning right motor on"
 GPIO.output(right_in1_pin,GPIO.HIGH)
