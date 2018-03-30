@@ -51,6 +51,7 @@ sleep(2)
 right_motor.stop()
 left_motor.stop()
 
+GPIO.cleanup()
 
     
 # except StandardError:
