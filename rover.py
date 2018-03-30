@@ -7,63 +7,59 @@ left_in1_pin = 4
 left_in2_pin = 17
 right_in1_pin = 23
 right_in2_pin = 24
-Motor1E = 18
+enable_pin = 18
 
 
 class Motor(object):
 
-    def __init__(self, in1_pin, in2_pin):
-                self.in1_pin = in1_pin
-                self.in2_pin = in2_pin
-               
-                GPIO.setup(self.in1_pin, GPIO.OUT)
-                GPIO.setup(self.in2_pin, GPIO.OUT)
+    def __init__(self, in1_pin, in2_pin, enable_pin):
+		self.in1_pin = in1_pin
+		self.in2_pin = in2_pin
+		self.enable_pin = enable_pin
+		   
+		GPIO.setup(self.in1_pin, GPIO.OUT)
+		GPIO.setup(self.in2_pin, GPIO.OUT)
+		GPIO.setup(self.enable_pin, GPIO.OUT)
        
     def clockwise(self):
-                GPIO.output(self.in1_pin, True)    
-                GPIO.output(self.in2_pin, False)
+		GPIO.output(self.in1_pin, True)    
+		GPIO.output(self.in2_pin, False)
+		GPIO.output(self.enable_pin, True)
 
     def counter_clockwise(self):
-                GPIO.output(self.in1_pin, False)
-                GPIO.output(self.in2_pin, True)
+		GPIO.output(self.in1_pin, False)
+		GPIO.output(self.in2_pin, True)
+		GPIO.output(self.enable_pin, True)
                
     def stop(self):
-                GPIO.output(self.in1_pin, False)    
-                GPIO.output(self.in2_pin, False)                
-
-    def forward(self):
-        left_motor = Motor(left_in1_pin, left_in2_pin)
-        right_motor = Motor(right_in1_pin, right_in2_pin)
-        
-        left_motor.clockwise()
-        right_motor.counter_clockwise()
-
+		GPIO.output(self.in1_pin, False)    
+		GPIO.output(self.in2_pin, False)
+		GPIO.output(self.enable_pin, False)                
+GPIO.cleanup()
 
 """
-try:
-    
-    left_motor = Motor(left_in1_pin, left_in2_pin)
-    right_motor = Motor(right_in1_pin, right_in2_pin)
-    
+#try:
 
+left_motor = Motor(left_in1_pin, left_in2_pin, enable_pin)
+right_motor = Motor(right_in1_pin, right_in2_pin, enable_pin)
 
-    print "Left Clockwise"
-    left_motor.clockwise()
-    sleep(2)
-    print "Left CC"
-    left_motor.counter_clockwise()
-    sleep(2)
-    left_motor.stop()
-    print "Right Clockwise"
-    right_motor.clockwise()
-    sleep(2)
-    print "Right CC"
-    right_motor.counter_clockwise()
-    sleep(2)
-    right_motor.stop()
+print "Left Clockwise"
+left_motor.clockwise()
+sleep(2)
+print "Left CC"
+left_motor.counter_clockwise()
+sleep(2)
+left_motor.stop()
+print "Right Clockwise"
+right_motor.clockwise()
+sleep(2)
+print "Right CC"
+right_motor.counter_clockwise()
+sleep(2)
+right_motor.stop()
     
-except StandardError:
-    print'Error running rover.py'
+#except StandardError:
+#    print'Error running rover.py'
      
 GPIO.cleanup()
     
