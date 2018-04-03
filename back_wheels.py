@@ -12,7 +12,7 @@ left_in2_pin = 17
 right_in1_pin = 23
 right_in2_pin = 24
 enable_pin = 18
-frequency = 50
+frequency = 10
 
 GPIO.setup(forward_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(backward_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)

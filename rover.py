@@ -3,12 +3,12 @@ from time import sleep
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
-left_in1_pin = 4
-left_in2_pin = 17
-right_in1_pin = 23
-right_in2_pin = 24
-enable_pin = 18
-frequency = 50
+#left_in1_pin = 4
+#left_in2_pin = 17
+#right_in1_pin = 23
+#right_in2_pin = 24
+#enable_pin = 18
+#frequency = 50
 
 
 class Motor(object):
@@ -21,7 +21,7 @@ class Motor(object):
 		GPIO.setup(self.in1_pin, GPIO.OUT)
 		GPIO.setup(self.in2_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
-                GPIO.PWM(self.enable_pin, frequency)
+		GPIO.PWM(self.enable_pin, frequency)
 
     def clockwise(self):
 		GPIO.output(self.in1_pin, True)    
