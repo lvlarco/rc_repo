@@ -16,11 +16,11 @@ class Motor(object):
 		self.in1_pin = in1_pin
 		self.in2_pin = in2_pin
 		self.enable_pin = enable_pin
-		   
+
 		GPIO.setup(self.in1_pin, GPIO.OUT)
 		GPIO.setup(self.in2_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
-       
+
     def clockwise(self):
 		GPIO.output(self.in1_pin, True)    
 		GPIO.output(self.in2_pin, False)
@@ -30,11 +30,12 @@ class Motor(object):
 		GPIO.output(self.in1_pin, False)
 		GPIO.output(self.in2_pin, True)
 		GPIO.output(self.enable_pin, True)
-               
+
     def stop(self):
 		GPIO.output(self.in1_pin, False)    
 		GPIO.output(self.in2_pin, False)
 		GPIO.output(self.enable_pin, False)                
+
 GPIO.cleanup()
 
 """
