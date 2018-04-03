@@ -8,11 +8,12 @@ left_in2_pin = 17
 right_in1_pin = 23
 right_in2_pin = 24
 enable_pin = 18
+frequency = 50
 
 
 class Motor(object):
 
-    def __init__(self, in1_pin, in2_pin, enable_pin):
+    def __init__(self, in1_pin, in2_pin, enable_pin, frequency):
 		self.in1_pin = in1_pin
 		self.in2_pin = in2_pin
 		self.enable_pin = enable_pin
@@ -20,6 +21,7 @@ class Motor(object):
 		GPIO.setup(self.in1_pin, GPIO.OUT)
 		GPIO.setup(self.in2_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
+        GPIO.pwm(self.enable_pin, frequency)
 
     def clockwise(self):
 		GPIO.output(self.in1_pin, True)    
