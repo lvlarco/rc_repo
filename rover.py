@@ -21,7 +21,7 @@ class Motor(object):
 		GPIO.setup(self.in1_pin, GPIO.OUT)
 		GPIO.setup(self.in2_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
-                GPIO.pwm(self.enable_pin, frequency)
+                GPIO.PWM(self.enable_pin, frequency)
 
     def clockwise(self):
 		GPIO.output(self.in1_pin, True)    
