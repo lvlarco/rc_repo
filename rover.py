@@ -13,7 +13,7 @@ GPIO.setmode(GPIO.BCM)
 
 class Motor(object):
 
-    def __init__(self, in1_pin, in2_pin, enable_pin, frequency):
+    def __init__(self, in1_pin, in2_pin, enable_pin):
 		self.in1_pin = in1_pin
 		self.in2_pin = in2_pin
 		self.enable_pin = enable_pin
@@ -21,7 +21,13 @@ class Motor(object):
 		GPIO.setup(self.in1_pin, GPIO.OUT)
 		GPIO.setup(self.in2_pin, GPIO.OUT)
 		GPIO.setup(self.enable_pin, GPIO.OUT)
-		GPIO.PWM(self.enable_pin, frequency)
+		
+    def setting(self, frequency, duty_cycle):
+		self.frequency = frequency
+		self.duty_cycle = duty_cycle
+		self.speed = GPIO.PWM(self.enable_pin, self.frequency)
+		self.speed.start(0)
+		self.speed.ChangeDutyCycle(self.duty_cycle)
 
     def clockwise(self):
 		GPIO.output(self.in1_pin, True)    
@@ -36,7 +42,7 @@ class Motor(object):
     def stop(self):
 		GPIO.output(self.in1_pin, False)    
 		GPIO.output(self.in2_pin, False)
-		GPIO.output(self.enable_pin, False)                
+		GPIO.output(self.enable_pin, False)             
 
 GPIO.cleanup()
 
