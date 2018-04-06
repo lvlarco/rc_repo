@@ -4,43 +4,65 @@ from time import sleep
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
-class Motor(object):
+class DriverMotor(object):
 
-    def __init__(self, in1_pin, in2_pin, enable_pin, frequency, duty_cycle):
+    def __init__(self, in1_pin, in2_pin, driver_pin):
 		self.in1_pin = in1_pin
 		self.in2_pin = in2_pin
-		self.enable_pin = enable_pin
-		self.frequency = frequency
-		self.duty_cycle = duty_cycle
+		self.driver_pin = driver_pin
 
 		GPIO.setup(self.in1_pin, GPIO.OUT)
 		GPIO.setup(self.in2_pin, GPIO.OUT)
-		GPIO.setup(self.enable_pin, GPIO.OUT)
-		
-		self.speed = GPIO.PWM(self.enable_pin, self.frequency)
+		GPIO.setup(self.driver_pin, GPIO.OUT)
 
     def clockwise(self):
-		GPIO.output(self.in1_pin, True)    
+        GPIO.output(self.in1_pin, True)    
 		GPIO.output(self.in2_pin, False)
-		GPIO.output(self.enable_pin, True)
+		GPIO.output(self.driver_pin, True)
 
     def counter_clockwise(self):
 		GPIO.output(self.in1_pin, False)
 		GPIO.output(self.in2_pin, True)
-		GPIO.output(self.enable_pin, True)
+		GPIO.output(self.driver_pin, True)
 
-    def stop(self):
-		GPIO.output(self.in1_pin, False)    
-		GPIO.output(self.in2_pin, False)
-		GPIO.output(self.enable_pin, False)          
+    def driver_stop(self):
+        GPIO.output(self.in1_pin, False)
+        GPIO.output(self.in2_pin, False)
+        GPIO.output(self.driver_pin, False)
+
+class SteerMotor(object):
+ 
+    def __init__(self, steer_right_pin, steer_left_pin, steer_pin):
+        self.steer_right_pin = steer_right_pin
+        self.steer_left_pin = steer_left_pin
+        self.steer_pin = steer_pin
+         
+        GPIO.setup(self.steer_right_pin, GPIO.OUT)
+        GPIO.setup(self.steer_left_pin, GPIO.OUT)
+        GPIO.setup(self.steer_pin, GPIO.OUT)
+         
+    def steer_right(self):
+        GPIO.output(self.steer_right_pin, True)
+        GPIO.output(self.steer_left_pint, False)
+        GPIO.output(self.steer_pin, True)
+         
+    def steer_left(self):
+        GPIO.output(self.steer_right_pin, False)
+        GPIO.output(self.steer_left_pint, True)
+        GPIO.output(self.steer_pin, True)
+         
+    def steer_stop(self):
+        GPIO.output(self.steer_right_pin, False)
+        GPIO.output(self.steer_left_pint, False)
+        GPIO.output(self.steer_pin, False)
 
 GPIO.cleanup()
 
 """
 #try:
 
-left_motor = Motor(left_in1_pin, left_in2_pin, enable_pin)
-right_motor = Motor(right_in1_pin, right_in2_pin, enable_pin)
+left_motor = Motor(left_in1_pin, left_in2_pin, driver_pin)
+right_motor = Motor(right_in1_pin, right_in2_pin, driver_pin)
 
 print "Left Clockwise"
 left_motor.clockwise()
