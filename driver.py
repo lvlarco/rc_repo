@@ -23,6 +23,8 @@ servo_pin = 18
 
 GPIO.setup(forward_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(backward_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(turn_right_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(turn_left_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 left_motor = DriverMotor(left_in1_pin, left_in2_pin, driver_pin)
 right_motor = DriverMotor(right_in1_pin, right_in2_pin, driver_pin)
@@ -62,7 +64,7 @@ while True:
 	if forward_state == True:
 		steer_motor.steer_stop()
 		
-	if right_state == False:
+	if left_state == False:
 		steer_motor.steer_left()
 		print'Turning Left'
 		sleep(0.1)
