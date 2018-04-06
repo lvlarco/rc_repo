@@ -32,25 +32,23 @@ class DriverMotor(object):
 
 class SteerMotor(object):
  
-    def __init__(self, servo_pin):
+    def __init__(self, servo_pin, frequency):
         self.servo_pin = servo_pin
-         
+        self.frequency = frequency
+
         GPIO.setup(self.servo_pin, GPIO.OUT)
-        self.pwm = GPIO.PWM(servo_pin, 50)
+        self.pwm = GPIO.PWM(self.servo_pin, self.frequency)
          
     def steer_right(self):
-        self.pwm.start(0)
-        GPIO.output(self.servo_pin, True)
-        self.pwm.ChangeDutyCycle(2.5)
+        self.pwm.start(10)
+        #self.pwm.ChangeDutyCycle(11.5)
          
     def steer_left(self):
-        self.pwm.start(0)
-        GPIO.output(self.servo_pin, True)
-        self.pwm.ChangeDutyCycle(7.5)
+        self.pwm.start(20)
+        #self.pwm.ChangeDutyCycle(20.5)
          
     def steer_stop(self):
-        GPIO.output(self.servo_pin, False)
-        self.pwm.stop()
+        self.pwm.start(0)
 
 GPIO.cleanup()
 

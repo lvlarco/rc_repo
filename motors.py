@@ -17,8 +17,8 @@ left_in2_pin = 17
 right_in1_pin = 23
 right_in2_pin = 24
 driver_pin = 18
-servo_pin = 18
-# frequency = 1000
+servo_pin = 16
+frequency = 100
 # duty_cycle = 50
 
 GPIO.setup(forward_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -28,7 +28,7 @@ GPIO.setup(turn_left_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 left_motor = DriverMotor(left_in1_pin, left_in2_pin, driver_pin)
 right_motor = DriverMotor(right_in1_pin, right_in2_pin, driver_pin)
-steer_motor = SteerMotor(servo_pin)
+steer_motor = SteerMotor(servo_pin, frequency)
 
 while True:
 	forward_state = GPIO.input(forward_pin)
@@ -60,14 +60,14 @@ while True:
 	if right_state == False:
 		steer_motor.steer_right()
 		print'Turning Right'
-		sleep(0.1)
+		sleep(0.2)
 	if forward_state == True:
 		steer_motor.steer_stop()
 		
 	if left_state == False:
 		steer_motor.steer_left()
 		print'Turning Left'
-		sleep(0.1)
+		sleep(0.2)
 	if forward_state == True:
 		steer_motor.steer_stop()
 
