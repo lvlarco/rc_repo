@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
-from rover import DriverMotor
+from setup import DriverMotor
+from setup import SteerMotor
 from time import sleep
 
 GPIO.setwarnings(False)
