@@ -11,7 +11,6 @@ backward_pin = 26
 turn_right_pin = 13
 turn_left_pin = 19
 #Output pins
-steer_pin = 16
 left_in1_pin = 4
 left_in2_pin = 17
 right_in1_pin = 23
@@ -26,7 +25,7 @@ GPIO.setup(backward_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 left_motor = DriverMotor(left_in1_pin, left_in2_pin, driver_pin)
 right_motor = DriverMotor(right_in1_pin, right_in2_pin, driver_pin)
-steer_motor = SteerMotor(steer_pin, servo_pin)
+steer_motor = SteerMotor(servo_pin)
 
 while True:
 	forward_state = GPIO.input(forward_pin)
