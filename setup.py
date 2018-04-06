@@ -7,23 +7,23 @@ GPIO.setmode(GPIO.BCM)
 class DriverMotor(object):
 
     def __init__(self, in1_pin, in2_pin, driver_pin):
-		self.in1_pin = in1_pin
-		self.in2_pin = in2_pin
-		self.driver_pin = driver_pin
+        self.in1_pin = in1_pin
+        self.in2_pin = in2_pin
+        self.driver_pin = driver_pin
 
-		GPIO.setup(self.in1_pin, GPIO.OUT)
-		GPIO.setup(self.in2_pin, GPIO.OUT)
-		GPIO.setup(self.driver_pin, GPIO.OUT)
+        GPIO.setup(self.in1_pin, GPIO.OUT)
+        GPIO.setup(self.in2_pin, GPIO.OUT)
+        GPIO.setup(self.driver_pin, GPIO.OUT)
 
     def clockwise(self):
         GPIO.output(self.in1_pin, True)    
-		GPIO.output(self.in2_pin, False)
-		GPIO.output(self.driver_pin, True)
+        GPIO.output(self.in2_pin, False)
+        GPIO.output(self.driver_pin, True)
 
     def counter_clockwise(self):
-		GPIO.output(self.in1_pin, False)
-		GPIO.output(self.in2_pin, True)
-		GPIO.output(self.driver_pin, True)
+        GPIO.output(self.in1_pin, False)
+        GPIO.output(self.in2_pin, True)
+        GPIO.output(self.driver_pin, True)
 
     def driver_stop(self):
         GPIO.output(self.in1_pin, False)
