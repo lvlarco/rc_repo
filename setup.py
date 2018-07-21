@@ -5,6 +5,7 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 class DriverMotor(object):
+    '''Allows back wheels to go back and forth'''
 
     def __init__(self, in1_pin, in2_pin, driver_pin):
         self.in1_pin = in1_pin
@@ -31,6 +32,7 @@ class DriverMotor(object):
         GPIO.output(self.driver_pin, False)
 
 class SteerMotor(object):
+    '''Allows steering of forward wheels'''
  
     def __init__(self, servo_pin, frequency):
         self.servo_pin = servo_pin
