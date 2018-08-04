@@ -61,14 +61,13 @@ while True:
 		steer_motor.steer_right()
 		print'Turning Right'
 		sleep(0.2)
+		
 	if forward_state == True:
 		steer_motor.steer_stop()
 		
-	if left_state == False:
+        if left_state == False:
 		steer_motor.steer_left()
 		print'Turning Left'
 		sleep(0.2)
-	if forward_state == True:
-		steer_motor.steer_stop()
 
 GPIO.cleanup()
