@@ -48,6 +48,9 @@ class SteerMotor(object):
     def steer_left(self):
         self.pwm.start(20)
         #self.pwm.ChangeDutyCycle(20.5)
+    
+    def steer_center(self):
+        self.pwm.start(2.5)
          
     def steer_stop(self):
         self.pwm.start(0)
