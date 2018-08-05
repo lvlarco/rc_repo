@@ -65,7 +65,7 @@ while True:
 	if forward_state == True:
 		steer_motor.steer_stop()
 		
-        if left_state == False:
+	if left_state == False:
 		steer_motor.steer_left()
 		print'Turning Left'
 		sleep(0.2)
