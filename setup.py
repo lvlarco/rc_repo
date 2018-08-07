@@ -46,7 +46,7 @@ class SteerMotor(object):
         #14 is neutral
          
     def steer_left(self):
-        self.pwm.start(13)
+        self.pwm.start(12)
         #14 is neutral
          
     def steer_stop(self):
