@@ -52,7 +52,8 @@ def dpad(pos):
         print'Turning Right'
         sleep(0.2)
     elif pos.middle:
-        print("fire")
+        steer_motor.steer_stop()
+        print("Stop")
 
 bd = BlueDot()
 bd.when_pressed = dpad
