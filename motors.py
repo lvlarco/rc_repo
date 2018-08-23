@@ -46,7 +46,6 @@ while True:
 	if forward_state == True:
 		left_motor.driver_stop()
 		right_motor.driver_stop()
-		
 	if backward_state == False:
 		left_motor.counter_clockwise()
 		right_motor.clockwise()
@@ -61,10 +60,8 @@ while True:
 		steer_motor.steer_right()
 		print'Turning Right'
 		sleep(0.2)
-		
 	if forward_state == True:
 		steer_motor.steer_stop()
-		
 	if left_state == False:
 		steer_motor.steer_left()
 		print'Turning Left'
