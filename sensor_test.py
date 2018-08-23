@@ -1,3 +1,4 @@
+
 from setup import SteerMotor
 from time import sleep
 from rpisensors.proximity import VL6180X
@@ -39,16 +40,12 @@ VL_ALS_GAIN_40 = 0x07
 #eeprom = Eeprom16(bus_id, VL6180X_I2CADDRESS)
 dist_sensor = VL6180X(1)
 
-distance = 0
+distance = 255
 
-while distance < 100:
-    print distance
-    
-    dist_log = dist_sensor.read_distance()
-    print "Distance is" , dist_log, " mm"
+while distance > 25:
+    distance = dist_sensor.read_distance()
+    print "Distance is" , distance, "mm"
 #     range_status = status & 0x07
 #     value = Eeprom16().read_byte(VL_RESULT_RANGE_VAL)
 
-    sleep(1)
-
-    distance = distance + 1
+    sleep(0.2)
