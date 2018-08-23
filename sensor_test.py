@@ -1,7 +1,7 @@
 from setup import SteerMotor
 from time import sleep
-from rpisensors.rpisensors.proximity import VL6180X
-from rpisensors.rpisensors.eeprom16 import Eeprom16
+from rpisensors.proximity import VL6180X
+from rpisensors.eeprom16 import Eeprom16
 
 # Default address
 VL6180X_I2CADDRESS = 0x29
@@ -61,7 +61,6 @@ while distance > 10:
 
     eeprom.logger.debug("Distance is %d mm", value)
     distance = distance + 1
-    
-    return value
+
 
 
