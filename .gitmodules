@@ -1,0 +1,3 @@
+[submodule "rpisensors"]
+	path = rpisensors
+	url = https://github.com/altosz/rpisensors
