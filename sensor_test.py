@@ -35,30 +35,27 @@ VL_ALS_GAIN_10 = 0x01
 VL_ALS_GAIN_20 = 0x00
 VL_ALS_GAIN_40 = 0x07
 
-bus_id = 00
-eeprom = Eeprom16(bus_id, VL6180X_I2CADDRESS)
-dist_sensor = VL6180X(Eeprom16)
+#bus_id = VL6180X
+#eeprom = Eeprom16(bus_id, VL6180X_I2CADDRESS)
+dist_sensor = VL6180X(1)
 
 distance = 0
 
-while distance > 10:
+while distance < 10:
+    print distance
     
     dist_log = dist_sensor.read_distance()
-    
-    
-    
-    status = eeprom.read_byte(VL_RESULT_INTERRUPT_STATUS_GPIO)
+    print dist_log
+    status = Eeprom16().read_byte(VL_RESULT_INTERRUPT_STATUS_GPIO)
     range_status = status & 0x07
     
-    if range_status == 0x04:
-        value = eeprom.read_byte(VL_RESULT_RANGE_VAL)
-        break
+ #   if range_status == 0x04:
+    value = Eeprom16().read_byte(VL_RESULT_RANGE_VAL)
+      #  break
 
-        sleep(0.1)
-        
+    sleep(1)
 
+    Eeprom16().write_byte(VL_SYSTEM_INTERRUPT_CLEAR, 0x07)
 
-    eeprom.write_byte(VL_SYSTEM_INTERRUPT_CLEAR, 0x07)
-
-    eeprom.logger.debug("Distance is %d mm", value)
+    print "Distance is %(value) mm"
     distance = distance + 1
