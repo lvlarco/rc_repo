@@ -41,21 +41,14 @@ dist_sensor = VL6180X(1)
 
 distance = 0
 
-while distance < 10:
+while distance < 100:
     print distance
     
     dist_log = dist_sensor.read_distance()
-    print dist_log
-    status = Eeprom16().read_byte(VL_RESULT_INTERRUPT_STATUS_GPIO)
-    range_status = status & 0x07
-    
- #   if range_status == 0x04:
-    value = Eeprom16().read_byte(VL_RESULT_RANGE_VAL)
-      #  break
+    print "Distance is" , dist_log, " mm"
+#     range_status = status & 0x07
+#     value = Eeprom16().read_byte(VL_RESULT_RANGE_VAL)
 
     sleep(1)
 
-    Eeprom16().write_byte(VL_SYSTEM_INTERRUPT_CLEAR, 0x07)
-
-    print "Distance is %(value) mm"
     distance = distance + 1
