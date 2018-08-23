@@ -35,9 +35,10 @@ VL_ALS_GAIN_10 = 0x01
 VL_ALS_GAIN_20 = 0x00
 VL_ALS_GAIN_40 = 0x07
 
-
-eeprom = Eeprom16()
+bus_id = 00
+eeprom = Eeprom16(bus_id, VL6180X_I2CADDRESS)
 dist_sensor = VL6180X(Eeprom16)
+
 distance = 0
 
 while distance > 10:
@@ -61,6 +62,3 @@ while distance > 10:
 
     eeprom.logger.debug("Distance is %d mm", value)
     distance = distance + 1
-
-
-
