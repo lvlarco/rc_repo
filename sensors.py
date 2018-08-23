@@ -36,16 +36,10 @@ VL_ALS_GAIN_10 = 0x01
 VL_ALS_GAIN_20 = 0x00
 VL_ALS_GAIN_40 = 0x07
 
-#bus_id = VL6180X
-#eeprom = Eeprom16(bus_id, VL6180X_I2CADDRESS)
 dist_sensor = VL6180X(1)
-
 distance = 255
 
 while distance > 25:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
-#     range_status = status & 0x07
-#     value = Eeprom16().read_byte(VL_RESULT_RANGE_VAL)
-
     sleep(0.2)
