@@ -1,4 +1,3 @@
-
 from setup import SteerMotor
 from time import sleep
 from rpisensors.proximity import VL6180X
