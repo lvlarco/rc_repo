@@ -59,5 +59,5 @@ def dpad(pos):
 
 bd = BlueDot()
 bd.when_pressed = dpad
-
+#bd.when_released = right_motor.driver_stop()
 pause()
