@@ -38,9 +38,9 @@ VL_ALS_GAIN_40 = 0x07
 dist_sensor = VL6180X(1)
 distance = 255
 
-while distance > 25:
+while distance >=  25:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
-    sleep(0.2)
+    sleep(0.1)
     if distance < 25:
         print"You are too close to the car!"
