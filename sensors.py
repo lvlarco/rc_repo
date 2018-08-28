@@ -42,3 +42,5 @@ while distance > 25:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
     sleep(0.2)
+    if distance < 25:
+        print"You are too close to the car!"
