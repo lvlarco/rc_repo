@@ -75,12 +75,6 @@ def release(pos):
         steer_motor.steer_stop()
         print("Stop")
         sleep(0.2)
-    elif pos.middle:
-        left_motor.driver_stop()
-        right_motor.driver_stop()
-        steer_motor.steer_stop()
-        print("Stop")
-    
     
 bd = BlueDot()
 bd.when_pressed = dpad
