@@ -33,6 +33,7 @@ right_motor = DriverMotor(right_in1_pin, right_in2_pin, driver_pin)
 steer_motor = SteerMotor(servo_pin, frequency)
 
 def dpad(pos):
+    #Driver
     if pos.top:
         left_motor.clockwise()
         right_motor.counter_clockwise()
@@ -43,6 +44,7 @@ def dpad(pos):
         right_motor.clockwise()
         print'Going Backward'
         sleep(0.1)
+    #Steering
     elif pos.left:
         steer_motor.steer_left()
         print'Turning Left'
@@ -51,11 +53,13 @@ def dpad(pos):
         steer_motor.steer_right()
         print'Turning Right'
         sleep(0.2)
+    #Hard Stop
     elif pos.middle:
         left_motor.driver_stop()
         right_motor.driver_stop()
         steer_motor.steer_stop()
         print("Stop")
+        
 def release(pos):
     if pos.top:
         left_motor.driver_stop()
