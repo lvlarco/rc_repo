@@ -37,16 +37,6 @@ dist_sensor = VL6180X(1)
 distance = 255
 dist_threshold = 25
 
-while distance >=  dist_threshold:
-    distance = dist_sensor.read_distance()
-    print "Distance is" , distance, "mm"
-    sleep(0.1)
-    if distance < dist_threshold:
-        left_motor.driver_stop()
-        right_motor.driver_stop()
-        steer_motor.steer_stop()
-        print"You are too close to the car!"
-
 def dpad(pos):
     #Driver
     if pos.top:
@@ -94,9 +84,20 @@ def release(pos):
         steer_motor.steer_stop()
         print("Stop")
         sleep(0.2)
-    
+
 bd = BlueDot()
 bd.when_pressed = dpad
 bd.when_released = release
+
+while distance >=  0:
+    distance = dist_sensor.read_distance()
+    print "Distance is" , distance, "mm"
+    sleep(0.1)
+    if distance < dist_threshold:
+        left_motor.driver_stop()
+        right_motor.driver_stop()
+        steer_motor.steer_stop()
+        print"You are too close to the car!"
+
 pause()
 
