@@ -98,6 +98,7 @@ while distance >=  0:
         right_motor.driver_stop()
         steer_motor.steer_stop()
         print"You are too close to the car!"
+	sleep(4)
 
 pause()
 
