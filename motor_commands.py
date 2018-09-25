@@ -67,6 +67,29 @@ def dpad(pos):
         steer_motor.steer_stop()
         print("Stop")
         
+def backing_up(pos):
+    #Driver
+    elif pos.bottom:
+        left_motor.counter_clockwise()
+        right_motor.clockwise()
+        print'Going Backward'
+        sleep(0.1)
+    #Steering
+    elif pos.left:
+        steer_motor.steer_left()
+        print'Turning Left'
+        sleep(0.2)
+    elif pos.right:
+        steer_motor.steer_right()
+        print'Turning Right'
+        sleep(0.2)
+    #Hard Stop
+    elif pos.middle:
+        left_motor.driver_stop()
+        right_motor.driver_stop()
+        steer_motor.steer_stop()
+        print("Stop")
+        
 def release(pos):
     if pos.top:
         left_motor.driver_stop()
@@ -87,9 +110,6 @@ def release(pos):
         print("Stop")
         sleep(0.2)
 
-
-
-
 while distance >=  0:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
@@ -99,10 +119,14 @@ while distance >=  0:
         bd.when_released = release
         
     if distance < dist_threshold:
+        
         left_motor.driver_stop()
         right_motor.driver_stop()
-        steer_motor.steer_stop()
+#         steer_motor.steer_stop()
+        
         print"You are too close to the car!"
+        sleep(1)
+        bd.when_pressed = backing_up
 #         sleep(5)
 
 pause()
