@@ -38,6 +38,7 @@ distance = 255
 dist_threshold = 30
 
 bd = BlueDot()
+bd.when_released = release
 
 def dpad(pos):
     #Driver
@@ -110,7 +111,6 @@ while distance >=  0:
     sleep(0.15)
     if distance >= dist_threshold:
         bd.when_pressed = dpad
-        bd.when_released = release
     elif distance < dist_threshold:
         left_motor.driver_stop()
         right_motor.driver_stop()
