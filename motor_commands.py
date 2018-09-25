@@ -4,6 +4,7 @@ from setup import SteerMotor
 from time import sleep
 from bluedot import BlueDot
 from signal import pause
+from rpisensors.proximity import VL6180X
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -84,3 +85,14 @@ bd = BlueDot()
 bd.when_pressed = dpad
 bd.when_released = release
 pause()
+
+dist_sensor = VL6180X(1)
+distance = 255
+dist_threshold = 25
+
+while distance >=  dist_threshold:
+    distance = dist_sensor.read_distance()
+    print "Distance is" , distance, "mm"
+    sleep(0.1)
+    if distance < dist_threshold:
+        print"You are too close to the car!"
