@@ -92,7 +92,7 @@ bd.when_released = release
 while distance >=  0:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
-    sleep(0.1)
+    sleep(0.15)
     if distance < dist_threshold:
         left_motor.driver_stop()
         right_motor.driver_stop()
