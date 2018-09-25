@@ -95,4 +95,7 @@ while distance >=  dist_threshold:
     print "Distance is" , distance, "mm"
     sleep(0.1)
     if distance < dist_threshold:
+        left_motor.driver_stop()
+        right_motor.driver_stop()
+        steer_motor.steer_stop()
         print"You are too close to the car!"
