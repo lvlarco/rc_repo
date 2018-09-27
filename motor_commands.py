@@ -35,7 +35,7 @@ steer_motor = SteerMotor(servo_pin, frequency)
 
 dist_sensor = VL6180X(1)
 distance = 255
-dist_threshold = 30
+dist_threshold = 250
 
 bd = BlueDot()
 
@@ -104,17 +104,17 @@ def release(pos):
         print("Stop")
         sleep(0.2)
 
+bd.when_released = release
+
 while distance >=  0:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
-    sleep(0.15)
+    sleep(0.05)
     if distance >= dist_threshold:
         bd.when_pressed = dpad
-        bd.when_released = release
     elif distance < dist_threshold:
         left_motor.driver_stop()
         right_motor.driver_stop()
-        steer_motor.steer_stop()
         print"You are too close to the car!"
         sleep(1)
         bd.when_pressed = backing_up
