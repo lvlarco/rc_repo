@@ -37,9 +37,6 @@ dist_sensor = VL6180X(1)
 distance = 255
 dist_threshold = 250
 
-bd = BlueDot()
-bd.when_released = release
-
 def dpad(pos):
     #Driver
     if pos.top:
@@ -105,9 +102,10 @@ def release(pos):
         print("Stop")
         sleep(0.2)
 
+bd = BlueDot()
 bd.when_released = release
 
-while distance >=  0:
+while True:
     distance = dist_sensor.read_distance()
     print "Distance is" , distance, "mm"
     sleep(0.05)
