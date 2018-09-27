@@ -38,6 +38,7 @@ distance = 255
 dist_threshold = 250
 
 bd = BlueDot()
+bd.when_released = release
 
 def dpad(pos):
     #Driver
